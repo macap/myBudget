@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="5063" systemVersion="12F45" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="Transaction" representedClassName="Transaction" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" syncable="YES"/>
+        <attribute name="decription" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="planned" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <attribute name="value" optional="YES" attributeType="Float" defaultValueString="0.0" syncable="YES"/>
+        <relationship name="cat" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="TransactionCategory" inverseName="transactions" inverseEntity="TransactionCategory" syncable="YES"/>
+    </entity>
+    <entity name="TransactionCategory" representedClassName="TransactionCategory" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="transactions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Transaction" inverseName="cat" inverseEntity="Transaction" syncable="YES"/>
+    </entity>
+    <fetchRequest name="DoneTransactions" entity="Transaction" predicateString="planned == 0"/>
+    <fetchRequest name="PlannedTransactions" entity="Transaction" predicateString="planned == 1"/>
+    <elements>
+        <element name="TransactionCategory" positionX="745" positionY="324" width="128" height="73"/>
+        <element name="Transaction" positionX="90" positionY="189" width="128" height="118"/>
+    </elements>
+</model>
